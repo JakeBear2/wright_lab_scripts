@@ -80,7 +80,6 @@ def notify_discord(user, finished_jobs):
         urllib.request.urlopen(req)
         print(f"job {idx} is done!")
 
-
 def main():
     known_jobs = []
     dirs = {}
@@ -104,7 +103,6 @@ def main():
 
         print(f"currently tracking: {known_jobs}")
         time.sleep(300) # 5 minutes
-
 
 if __name__ == "__main__":
     main()
