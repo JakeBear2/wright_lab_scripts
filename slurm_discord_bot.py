@@ -29,7 +29,14 @@ def notify_discord(user, finished_jobs):
     mention = f"<@{DISCORD_IDS[user]}>" if user in DISCORD_IDS else ""
     for idx in finished_jobs:
         message = json.dumps({"content": f"{mention} job {idx} is done!"}).encode()
-        req = urllib.request.Request(WEBHOOK_URL, data=message, headers={"Content-Type": "application/json"})
+        req = urllib.request.Request(
+            WEBHOOK_URL,
+            data=message,
+            headers={
+                "Content-Type": "application/json",
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
         urllib.request.urlopen(req)
         print(f"job {idx} is done!")
 
